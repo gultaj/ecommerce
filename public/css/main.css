@@ -771,6 +771,9 @@ header a:link, header a:visited {
 #admin .form-price {
     width: 60px;
 }
+#admin .form-check {
+    width: auto;
+}
 
 #admin .required-field {
     color: #5daad0;
@@ -999,7 +1002,7 @@ footer #links {
 footer #links a:link, footer #links a:visited {
     color: #2e373f;
     text-decoration: none;
-} 
+}
 
 footer #links ul {
     margin-left: 13px;

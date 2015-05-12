@@ -15,3 +15,11 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+// Route::get('admin/categories', 'CategoriesController@index');
+
+Route::group(['prefix' => 'admin'], function()
+{
+	Route::resource('products', 'AdminProductsController', ['except' => 'show']);
+  Route::resource('categories', 'AdminCategoriesController', ['except' => 'show']);
+});

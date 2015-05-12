@@ -34,7 +34,7 @@
                     <nav class="dropdown">
                         <ul>
                             <li>
-                                <a href="#">Shop by Category <img src="img/down-arrow.gif" alt="Shop by Category" /></a>
+                                <a href="#">Shop by Category {{ HTML::image('img/down-arrow.gif', 'Shop by Category') }}</a>
                                 <ul>
                                     <li><a href="#">Laptops</a></li>
                                     <li><a href="#">Desktop PC</a></li>
@@ -57,7 +57,7 @@
                         <nav id="signin" class="dropdown">
                             <ul>
                                 <li>
-                                    <a href="#"><img src="img/user-icon.gif" alt="Sign In" /> Sign In <img src="img/down-arrow.gif" alt="Sign In" /></a>
+                                    <a href="#">{{ HTML::image('img/user-icon.gif', 'Sign In') }} Sign In {{ HTML::image('img/down-arrow.gif', 'Sign In') }}</a>
                                     <ul>
                                         <li><a href="#">Sign In</a></li>
                                         <li><a href="#">Sign Up</a></li>
@@ -70,7 +70,7 @@
                         <nav class="dropdown">
                             <ul>
                                 <li>
-                                    <a href="#"><img src="img/user-icon.gif" alt="Andrew Perkins" /> Andrew Perkins <img src="img/down-arrow.gif" alt="Andrew Perkins" /></a>
+                                    <a href="#">{{ HTML::image('img/user-icon.gif', 'Andrew Perkins') }} Andrew Perkins {{ HTML::image('img/down-arrow.gif', 'Andrew Perkins') }}</a>
                                     <ul>
                                         <li><a href="#">Order History</a></li>
                                         <li><a href="#">Sign Out</a></li>
@@ -81,7 +81,7 @@
                     </div><!-- end user-menu -->
 
                     <div id="view-cart">
-                        <a href="#"><img src="img/blue-cart.gif" alt="View Cart"> View Cart</a>
+                        <a href="#">{{ HTML::image('img/blue-cart.gif', 'View Cart') }} View Cart</a>
                     </div><!-- end view-cart -->
                 </section><!-- end action-bar -->
             </header>
@@ -89,30 +89,13 @@
             <hr />
 
             <section id="main-content" class="clearfix">
-                <div id="product-image">
-                    <img src="img/main-product.png" alt="Product">
-                </div><!-- end product-image -->
-                <div id="product-details">
-                    <h1>This is the product title</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, impedit, laborum accusamus sit voluptatem doloremque ipsum ea error reiciendis doloribus! Quasi, incidunt cumque consectetur deserunt explicabo odio earum molestiae modi.</p>
 
-                    <hr />
+                @if (Session::has('message'))
+                  <p class="alert">{{ Session::get('message') }}</p>
+                @endif
 
-                    <form action="#" method="post">
-                        <label for="qty">Qty:</label>
-                        <input type="text" id="qty" name="qty" value="1" maxlength="2">
+                @yield('content')
 
-                        <button type="submit" class="secondary-cart-btn">
-                            <img src="img/white-cart.gif" alt="Add to Cart" />
-                             ADD TO CART
-                        </button>
-                    </form>
-                </div><!-- end product-details -->
-                <div id="product-info">
-                    <p class="price">$1099</p>
-                    <p>Availability: <span>In Stock</span></p>
-                    <p>Product Code: <span>32321</span></p>
-                </div><!-- end product-info -->
             </section><!-- end main-content -->
 
             <hr />
@@ -169,7 +152,7 @@
                     </div><!-- end connect -->
                     <div id="payments">
                         <h4>SUPPORTED PAYMENT METHODS</h4>
-                        <img src="img/payment-methods.gif" alt="Supported Payment Methods">
+                        {{ HTML::image('img/payment-methods.gif', 'Supported Payment Methods') }}
                     </div><!-- end payments -->
                 </section>
             </footer>
@@ -177,8 +160,8 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        {{ HTML::script('js/plugins.js') }}
+        {{ HTML::script('js/main.js') }}
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
