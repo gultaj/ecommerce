@@ -11,11 +11,19 @@ class StoreController extends \BaseController {
     return View::make('store.index', compact('products'));
   }
 
-  public function show($id) {
+  public function product($id) {
     $product = Product::find($id);
 
     return View::make('store.view', compact('product'));
   }
+
+  public function category($id) {
+    $products = Product::where('category_id', '=', $id)->paginate(1);
+    $category = Category::find($id);
+
+    return View::make('store.category', compact(['products', 'category']));
+  }
+
 }
 
  ?>

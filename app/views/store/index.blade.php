@@ -22,11 +22,11 @@
   @foreach($products as $product)
 
     <div class="product">
-      {{ HTML::decode(link_to_route('store.show',
+      {{ HTML::decode(link_to_route('store.product',
         HTML::image($product->image, $product->title, ['class' => 'feature', 'width' => 240, 'height' => 127]), [$product->id])) }}
 
 
-      <h3>{{ link_to_route('store.show', $product->title, [$product->id]) }}</h3>
+      <h3>{{ link_to_route('store.product', $product->title, [$product->id]) }}</h3>
 
       <p>{{ $product->description }}</p>
 
