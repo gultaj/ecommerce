@@ -15,8 +15,7 @@ Route::pattern('id', '[0-9]+');
 Route::get('/', ['as' => 'home', 'uses' => 'StoreController@index']);
 Route::get('/store/{id}', ['as' => 'store.product', 'uses' => 'StoreController@product']);
 Route::get('/store/category/{id}', ['as' => 'store.category', 'uses' => 'StoreController@category']);
-
-// Route::get('admin/categories', 'CategoriesController@index');
+Route::get('/store/search', ['as' => 'store.search', 'uses' => 'StoreController@search']);
 
 Route::group(['prefix' => 'admin'], function()
 {

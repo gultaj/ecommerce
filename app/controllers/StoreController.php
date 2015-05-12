@@ -24,6 +24,13 @@ class StoreController extends \BaseController {
     return View::make('store.category', compact(['products', 'category']));
   }
 
+  public function search() {
+    $keyword = Input::get('keyword');
+    $products = Product::where('title', 'LIKE', '%'.$keyword.'%')->get();
+
+    return View::make('store.search', compact(['keyword', 'products']));
+  }
+
 }
 
  ?>

@@ -445,6 +445,7 @@ header a:link, header a:visited {
 
 #main-content p {
     margin-bottom: 25px;
+    word-wrap: break-word;
 }
 
 #main-content hr {
