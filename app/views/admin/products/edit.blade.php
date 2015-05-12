@@ -1,4 +1,4 @@
-@extends('.admin.layouts.main')
+@extends('layouts.main')
 
 @section('content')
   <div id="admin">
@@ -17,7 +17,7 @@
         @endforeach
       </ul>
     </div>
-    
+
     @endif
 
 
