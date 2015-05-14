@@ -14,7 +14,7 @@ class StoreController extends \BaseController {
   public function product($id) {
     $product = Product::find($id);
 
-    return View::make('store.view', compact('product'));
+    return View::make('store.product', compact('product'));
   }
 
   public function category($id) {

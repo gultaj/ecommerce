@@ -52,31 +52,31 @@
                     </div><!-- end search-form -->
 
                     <div id="user-menu">
-
+                      @if (!Auth::check())
                         <nav id="signin" class="dropdown">
                             <ul>
                                 <li>
                                     <a href="#">{{ HTML::image('img/user-icon.gif', 'Sign In') }} Sign In {{ HTML::image('img/down-arrow.gif', 'Sign In') }}</a>
                                     <ul>
-                                        <li><a href="#">Sign In</a></li>
-                                        <li><a href="#">Sign Up</a></li>
+                                      <li>{{ link_to_route('auth.login.get', 'Sign In') }}</li>
+                                      <li>{{ link_to_route('users.create', 'Sign Up') }}</li>
                                     </ul>
                                 </li>
                             </ul>
                         </nav>
-
-                        <!--
+                      @else
                         <nav class="dropdown">
                             <ul>
                                 <li>
-                                    <a href="#">{{ HTML::image('img/user-icon.gif', 'Andrew Perkins') }} Andrew Perkins {{ HTML::image('img/down-arrow.gif', 'Andrew Perkins') }}</a>
+                                    <a href="#">{{ HTML::image('img/user-icon.gif', $fullname = User::fullName(Auth::user())) }} {{ $fullname }} {{ HTML::image('img/down-arrow.gif', $fullname) }}</a>
                                     <ul>
                                         <li><a href="#">Order History</a></li>
-                                        <li><a href="#">Sign Out</a></li>
+                                        <li>{{ link_to_route('auth.logout', 'Log out') }}</li>
                                     </ul>
                                 </li>
                             </ul>
-                        </nav>-->
+                        </nav>
+                      @endif
                     </div><!-- end user-menu -->
 
                     <div id="view-cart">
