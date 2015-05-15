@@ -3,18 +3,6 @@
 class UsersController extends \BaseController {
 
 	/**
-	 * Display a listing of users
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$users = User::all();
-
-		return View::make('users.index', compact('users'));
-	}
-
-	/**
 	 * Show the form for creating a new user
 	 *
 	 * @return Response
@@ -38,10 +26,6 @@ class UsersController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-
-		//$data['password'] = Hash::make($data['password']);
-
-
 		User::create($data);
 
 		return Redirect::route('auth.login.get')->with('message', 'You are registered!');
@@ -55,6 +39,10 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
+		if (Auth::guest() || (Auth::user()->id != $id)) {
+			return Redirect::home()->with('message', 'You don\'t have a permission!');
+		}
+
 		$user = User::findOrFail($id);
 
 		return View::make('users.show', compact('user'));

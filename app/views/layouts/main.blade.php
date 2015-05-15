@@ -71,6 +71,9 @@
                                     <a href="#">{{ HTML::image('img/user-icon.gif', $fullname = User::fullName(Auth::user())) }} {{ $fullname }} {{ HTML::image('img/down-arrow.gif', $fullname) }}</a>
                                     <ul>
                                         <li><a href="#">Order History</a></li>
+                                        @if (Auth::user()->admin)
+                                          <li>{{ link_to_route('admin.products.index', 'Admin panel') }}</li>
+                                        @endif
                                         <li>{{ link_to_route('auth.logout', 'Log out') }}</li>
                                     </ul>
                                 </li>
@@ -80,7 +83,7 @@
                     </div><!-- end user-menu -->
 
                     <div id="view-cart">
-                        <a href="#">{{ HTML::image('img/blue-cart.gif', 'View Cart') }} View Cart</a>
+                      {{ HTML::decode(link_to_route('store.cart', HTML::image('img/blue-cart.gif', 'View Cart'). 'View Cart')) }}
                     </div><!-- end view-cart -->
                 </section><!-- end action-bar -->
             </header>

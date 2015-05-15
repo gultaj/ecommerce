@@ -17,13 +17,17 @@ Route::get('/store/{id}', ['as' => 'store.product', 'uses' => 'StoreController@p
 Route::get('/store/category/{id}', ['as' => 'store.category', 'uses' => 'StoreController@category']);
 Route::get('/store/search', ['as' => 'store.search', 'uses' => 'StoreController@search']);
 
+Route::get('/store/cart', ['as' => 'store.cart', 'uses' => 'StoreController@getCart']);
+Route::post('/store/addtocart', ['as' => 'store.addtocart', 'uses' => 'StoreController@postAddToCart']);
+Route::get('/store/removeitem/{ids}', ['as' => 'store.removeitem', 'uses' => 'StoreController@getRemoveItem']);
+
 Route::resource('users', 'UsersController', ['except' => 'index']);
 
 Route::get('login', ['as' => 'auth.login.get', 'uses' => 'AuthController@getLogin']);
 Route::post('login', ['as' => 'auth.login.post', 'uses' => 'AuthController@postLogin']);
 Route::get('logout', ['as' => 'auth.logout', 'uses' => 'AuthController@getLogout']);
 
-Route::group(['prefix' => 'admin'], function()
+Route::group(['prefix' => 'admin', 'before' => 'admin'], function()
 {
 	Route::resource('products', 'AdminProductsController', ['except' => 'show']);
   Route::resource('categories', 'AdminCategoriesController', ['except' => 'show']);
